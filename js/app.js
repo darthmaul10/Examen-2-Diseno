@@ -33,7 +33,7 @@ function agregarCarrito(e) {
 
         leerDatosProductos(productoSeleccionado);
 
-        alert('Producto Agregado al carrito')
+
     }
 }
 
@@ -47,6 +47,7 @@ function eliminarArticulo(e) {
         //eliminar del arreglo de articulosCarrito por el data-id
 
         articulosCarrito = articulosCarrito.filter(articulo => articulo.id !== articuloId);
+
 
         carritoHTML();
     }
@@ -67,27 +68,37 @@ function leerDatosProductos(producto) {
         cantidad: producto.querySelector('input').value,
     };
 
-    producto.querySelector('input').value = '';
 
-    //revisa si un elemento ya existe en el carrito
-
-    const existe = articulosCarrito.some(articulo => articulo.id === infoProducto.id)
-
-    if (!existe) {
-        //agregando producto al carrito
-        articulosCarrito.push(infoProducto);
+    if (producto.querySelector('input').value == '') {
+        alert('El producto debe agregarse con una cantidad diferente de 0')
     } else {
-        const articulos = articulosCarrito.map(articulo => {
-            if (articulo.id === infoProducto.id) {
-                articulo.cantidad++
-                return articulo;
-            } else {
-                return articulo;
-            }
-        });
-        articulosCarrito = [...articulos]
+
+        producto.querySelector('input').value = '';
+        //revisa si un elemento ya existe en el carrito
+
+        const existe = articulosCarrito.some(articulo => articulo.id === infoProducto.id)
+
+        if (!existe) {
+            //agregando producto al carrito
+            articulosCarrito.push(infoProducto);
+        } else {
+            const articulos = articulosCarrito.map(articulo => {
+                if (articulo.id === infoProducto.id) {
+
+                    articulo.cantidad = parseInt(articulo.cantidad) + parseInt(infoProducto.cantidad);
+
+                    return articulo;
+                } else {
+                    return articulo;
+                }
+            });
+            articulosCarrito = [...articulos]
+        }
+        alert('Producto Agregado al carrito')
+        carritoHTML();
     }
-    carritoHTML();
+
+
 }
 
 //mostrar el carrito de compras
@@ -107,30 +118,40 @@ function carritoHTML() {
             id,
             cantidad
         } = articulo;
+        let costo = parseFloat(cantidad * precio).toFixed(2);
         const fila = document.createElement('tr');
         fila.innerHTML = `
     <td> <img src="${imagen}" alt="imagen producto" width="100" > </td>
     <td> ${nombre}</td>
     <td> ${precio}</td>
     <td> ${cantidad}</td>
+    <td>  ${costo}</td>
     <td> <a href="#" data-id="${id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
   </svg></a></td>
     `;
 
-        total += parseInt(precio) * parseInt(cantidad);
-        //agrego el html del carrito al body de la table carrito
+        total += parseFloat(precio).toFixed(2) * parseFloat(cantidad).toFixed(2);
 
+        //agrego el html del carrito al body de la table carrito
         contenedorCarrito.appendChild(fila);
     });
 
+    let total2  = parseFloat(total).toFixed(2);
+    let tax = parseFloat(total2*0.15).toFixed(2) ;
+    let total3 =(parseFloat(total2) + parseFloat(tax)).toFixed(2) ;
+
     //agregando el total
     let totalRow = document.createElement('tr');
-    totalRow.innerHTML = `<td scope="row" > Total:  ${total}</td>`
+    totalRow.innerHTML = `
+    <td scope="row" > Subtotal:  ${total2}</td>
+    <td scope="row" > Impuesto:  ${tax}</td>
+    <td scope="row" > Total:  ${total3}</td>
+    `
     contenedorCarrito.appendChild(totalRow);
 
-    
+
 
 }
 
