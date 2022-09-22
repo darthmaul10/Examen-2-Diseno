@@ -34,28 +34,52 @@
             </div>
         </div>
 
+
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title h2" id="exampleModalLabel">
+                            Carrito de Compras
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <div id="carrito">
+                            <table id="lista-carrito" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+
+                            <a href="#" id="vaciar-carrito" class="btn btn-outline-warning">Vaciar Carrito</a>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                    <!-- <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary ">Save changes</button>
+        </div> -->
                 </div>
             </div>
         </div>
 
     </header>
 
-    <main class="container-xl">
+    <main class="container-xl" id="lista-productos">
         <div class="row">
             <div class="col-md-3 mb-4">
                 <div class="card" style="width: 18rem;">
@@ -64,13 +88,13 @@
                         <h5 class="card-title fw-bold fs-3">Fresas</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>94.90</span></p>
+                        <p>Precio Por Libra  <span class="precio">94.90</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Libras</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="1" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
@@ -83,13 +107,13 @@
                         <h5 class="card-title fw-bold fs-3">Melon</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>30</span></p>
+                        <p>Precio Por Libra  <span class="precio">30</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Unidad</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="2" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
@@ -102,13 +126,13 @@
                         <h5 class="card-title fw-bold fs-3">Sandia</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>50</span></p>
+                        <p>Precio Por Libra  <span class="precio">50</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Unidad</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="3" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
@@ -121,13 +145,13 @@
                         <h5 class="card-title fw-bold fs-3">Piña</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>70</span></p>
+                        <p>Precio Por Libra  <span class="precio">70</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Unidad</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="4" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
@@ -140,13 +164,13 @@
                         <h5 class="card-title fw-bold fs-3">Uva Roja</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>66.90</span></p>
+                        <p>Precio Por Libra  <span class="precio">66.90</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Libras</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="5" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
@@ -159,13 +183,13 @@
                         <h5 class="card-title fw-bold fs-3">Manzanas</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>14.90</span></p>
+                        <p>Precio Por Libra  <span class="precio">14.90</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Unidad</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="6" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
@@ -178,13 +202,13 @@
                         <h5 class="card-title fw-bold fs-3">Banano</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur,
                             velit.</p>
-                        <p>Precio Por Libra <span>3.32</span></p>
+                        <p>Precio Por Libra  <span class="precio">3.32</span></p>
                         <div class="input-group mt-3 mb-3">
                             <span class="input-group-text">Unidad</span>
                             <input type="text" aria-label="First name" class="form-control">
                         </div>
-                        <a href="#" class="btn btn-primary fs-5"><img src="img/carrito/add.png" class="img-fluid"
-                                style="width: 3rem;" alt="">Agregar</a>
+                        <a data-id="7" href="#" class="btn btn-primary producto-p fs-5"><img src="img/carrito/add.png" class="img-fluid"
+                                style="width: 3rem;" alt="" >Agregar</a>
 
                     </div>
                 </div>
